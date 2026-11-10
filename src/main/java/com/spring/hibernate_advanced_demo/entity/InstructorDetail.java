@@ -1,16 +1,16 @@
 package com.spring.hibernate_advanced_demo.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Table;
 
-@Entity 
-@Table (name = "instructor_detail")
+@Entity
+@Table(name = "instructor_detail")
 public class InstructorDetail {
 
   @Id
@@ -24,8 +24,7 @@ public class InstructorDetail {
   @Column(name = "hobby")
   private String hobby;
 
-  public InstructorDetail() {
-  }
+  public InstructorDetail() {}
 
   public InstructorDetail(String subject, String hobby) {
     this.subject = subject;
@@ -46,16 +45,20 @@ public class InstructorDetail {
 
   @Override
   public String toString() {
-    return "InstructorDetail{id=" + id
-        + ", subject='" + subject + '\''
-        + ", hobby='" + hobby + '\''
+    return "InstructorDetail{id="
+        + id
+        + ", subject='"
+        + subject
+        + '\''
+        + ", hobby='"
+        + hobby
+        + '\''
         + '}';
   }
 
-  @OneToOne(mappedBy = "instructorDetail", cascade = {CascadeType.DETACH,
-                                                      CascadeType.MERGE,
-                                                      CascadeType.PERSIST,
-                                                      CascadeType.REFRESH})
+  @OneToOne(
+      mappedBy = "instructorDetail",
+      cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
   private Instructor instructor;
 
   public Instructor getInstructor() {
@@ -65,7 +68,4 @@ public class InstructorDetail {
   public void setInstructor(Instructor instructor) {
     this.instructor = instructor;
   }
-
-
- 
 }

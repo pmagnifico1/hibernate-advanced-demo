@@ -6,12 +6,15 @@ import com.spring.hibernate_advanced_demo.entity.Instructor;
 import com.spring.hibernate_advanced_demo.entity.InstructorDetail;
 import com.spring.hibernate_advanced_demo.entity.Review;
 import com.spring.hibernate_advanced_demo.entity.Student;
-import jakarta.persistence.TypedQuery;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * Main Spring Boot application for the Hibernate advanced demo. Starts the application and executes
+ * the demo runner configured in this class.
+ */
 @SpringBootApplication
 public class HibernateAdvancedDemoApplication {
 
@@ -117,9 +120,16 @@ public class HibernateAdvancedDemoApplication {
 
   private void createInstructorAndReviews(AppDao app) {
     // Course advancedCourse = new Course("Mastering Limitless with Gojo");
-    // advancedCourse.addReview(new Review("Gojo-sensei explains advanced techniques in a way that finally makes sense."));
-    // advancedCourse.addReview(new Review("The training was intense, but I feel much more confident using cursed energy."));
-    // advancedCourse.addReview(new Review("Best jujutsu class I’ve taken—though Gojo-sensei definitely knows he’s the strongest."));
+    // advancedCourse.addReview(
+    //     new Review(
+    //         "Gojo-sensei explains advanced techniques in a way that finally makes sense."));
+    // advancedCourse.addReview(
+    //     new Review(
+    //         "The training was intense, but I feel much more confident using cursed energy."));
+    // advancedCourse.addReview(
+    //     new Review(
+    //         "Best jujutsu class I’ve taken—though Gojo-sensei definitely knows he’s "
+    //             + "the strongest."));
     // System.out.println("Advanced course saved!");
     // app.save(advancedCourse);
     Course course = new Course("How to become a Jujutsu Sorcerer");

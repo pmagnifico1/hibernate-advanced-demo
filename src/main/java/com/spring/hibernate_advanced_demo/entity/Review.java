@@ -3,24 +3,23 @@ package com.spring.hibernate_advanced_demo.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.GenerationType;
 
-@Entity 
-@Table (name = "review")
+@Entity
+@Table(name = "review")
 public class Review {
 
-  @Id 
-  @GeneratedValue (strategy=GenerationType.IDENTITY)
-  @Column (name = "id")
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
   private int id;
 
-  @Column (name = "comments")
+  @Column(name = "comments")
   private String comments;
 
-  public Review() {
-  }
+  public Review() {}
 
   public Review(String comments) {
     this.comments = comments;
@@ -46,9 +45,4 @@ public class Review {
   public String toString() {
     return "Review [id=" + id + ", comments=" + comments + "]";
   }
-
-  
-
-  
-
 }
