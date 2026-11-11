@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Represents an instructor and the instructor's related courses and details. */
+/** Represents an instructor, including profile details and associated courses. */
 @Entity
 @Table(name = "instructor")
 public class Instructor {
@@ -103,6 +103,7 @@ public class Instructor {
     return instructorDetail;
   }
 
+  /** Returns a string representation of this instructor. */
   @Override
   public String toString() {
     return "Instructor{id="

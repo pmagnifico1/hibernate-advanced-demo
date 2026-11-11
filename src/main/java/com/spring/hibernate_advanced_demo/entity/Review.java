@@ -48,6 +48,7 @@ public class Review {
     this.comments = comments;
   }
 
+  /** Returns a string representation of this review. */
   @Override
   public String toString() {
     return "Review [id=" + id + ", comments=" + comments + "]";

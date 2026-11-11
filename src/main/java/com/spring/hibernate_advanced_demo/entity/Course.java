@@ -16,7 +16,6 @@ import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Represents a course entity. */
 /** Represents a course in the persistence model. */
 @Entity
 @Table(name = "course")
@@ -63,6 +62,7 @@ public class Course {
     this.instructor = instructor;
   }
 
+  /** Returns a string representation of this course. */
   @Override
   public String toString() {
     return "Course{id=" + id + ", title='" + title + '\'' + '}';

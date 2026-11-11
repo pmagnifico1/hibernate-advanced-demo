@@ -64,6 +64,7 @@ public class Student {
     this.email = email;
   }
 
+  /** Returns a string representation of this student. */
   @Override
   public String toString() {
     return "Student [first_name="
