@@ -18,10 +18,12 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class HibernateAdvancedDemoApplication {
 
+  /** Launches the Spring Boot application. */
   public static void main(String[] args) {
     SpringApplication.run(HibernateAdvancedDemoApplication.class, args);
   }
 
+  /** Configures the command-line runner for the demo operations. */
   @Bean
   CommandLineRunner commandLineRunner(AppDao app) {
     return runner -> {

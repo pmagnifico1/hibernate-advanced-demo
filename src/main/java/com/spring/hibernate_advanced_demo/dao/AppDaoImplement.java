@@ -10,43 +10,51 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
+/** Implements persistence operations using a JPA entity manager. */
 @Repository
 public class AppDaoImplement implements AppDao {
 
   private EntityManager em;
 
+  /** Creates the DAO with the entity manager used for persistence. */
   public AppDaoImplement(EntityManager em) {
     this.em = em;
   }
 
+  /** Persists a course. */
   @Override
   @Transactional
   public void save(Course theCourse) {
     em.persist(theCourse);
   }
 
+  /** Updates an instructor. */
   @Override
   @Transactional
   public void update(Instructor in) {
     em.merge(in);
   }
 
+  /** Persists an instructor. */
   @Override
   @Transactional
   public void save(Instructor theInstructor) {
     em.persist(theInstructor);
   }
 
+  /** Finds an instructor by identifier. */
   @Override
   public Instructor findInstructorById(int theId) {
     return em.find(Instructor.class, theId);
   }
 
+  /** Finds instructor details by identifier. */
   @Override
   public InstructorDetail findInstructorDetailById(int theId) {
     return em.find(InstructorDetail.class, theId);
   }
 
+  /** Deletes instructor details by identifier. */
   @Override
   @Transactional
   public void deleteInstructorDetailById(int theId) {
@@ -54,6 +62,7 @@ public class AppDaoImplement implements AppDao {
     em.remove(deets);
   }
 
+  /** Clears the relationship and deletes instructor details by identifier. */
   @Override
   @Transactional
   public void deleteInstructorDetail(int theId) {
@@ -62,6 +71,7 @@ public class AppDaoImplement implements AppDao {
     em.remove(deets);
   }
 
+  /** Finds courses belonging to an instructor. */
   @Override
   public List<Course> findCoursesByInstructorId(int theId) {
     TypedQuery<Course> query =
@@ -71,6 +81,7 @@ public class AppDaoImplement implements AppDao {
     return courses;
   }
 
+  /** Finds an instructor with courses and details loaded. */
   @Override
   public Instructor findInstructorByIdJoinFetch(int theId) {
     TypedQuery<Instructor> query =
@@ -85,6 +96,7 @@ public class AppDaoImplement implements AppDao {
     return in;
   }
 
+  /** Deletes an instructor and clears its course relationships. */
   public void deleteInstructorById(int theId) {
     Instructor in = em.find(Instructor.class, theId);
     List<Course> courses = in.getCourses();
@@ -94,6 +106,7 @@ public class AppDaoImplement implements AppDao {
     em.remove(in);
   }
 
+  /** Finds a course and its reviews by course identifier. */
   @Override
   public Course findCourseAndReviewsByCourseId(int theId) {
     TypedQuery<Course> query =
@@ -105,6 +118,7 @@ public class AppDaoImplement implements AppDao {
     return course;
   }
 
+  /** Deletes a course by identifier. */
   @Override
   @Transactional
   public void deleteCourseById(int theId) {
@@ -112,6 +126,7 @@ public class AppDaoImplement implements AppDao {
     em.remove(course);
   }
 
+  /** Finds a course and its students by course identifier. */
   @Override
   public Course findCourseAndStudentByCourseId(int theId) {
     TypedQuery<Course> query =
@@ -124,6 +139,7 @@ public class AppDaoImplement implements AppDao {
     return course;
   }
 
+  /** Finds a student and their courses by student identifier. */
   @Override
   public Student findStudentAndCoursesByStudentId(int theId) {
     TypedQuery<Student> query =
@@ -136,6 +152,7 @@ public class AppDaoImplement implements AppDao {
     return student;
   }
 
+  /** Updates a student. */
   @Override
   @Transactional
   public void update(Student student) {

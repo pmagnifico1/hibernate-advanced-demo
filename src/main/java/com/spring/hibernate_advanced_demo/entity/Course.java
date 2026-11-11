@@ -16,6 +16,8 @@ import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Represents a course entity. */
+/** Represents a course in the persistence model. */
 @Entity
 @Table(name = "course")
 public class Course {
@@ -33,24 +35,30 @@ public class Course {
   @JoinColumn(name = "instructor_id")
   private Instructor instructor;
 
+  /** Creates an empty course. */
   public Course() {}
 
+  /** Creates a course with the given title. */
   public Course(String title) {
     this.title = title;
   }
 
+  /** Returns this course's title. */
   public String getTitle() {
     return title;
   }
 
+  /** Sets this course's title. */
   public void setTitle(String title) {
     this.title = title;
   }
 
+  /** Returns the instructor associated with this course. */
   public Instructor getInstructor() {
     return instructor;
   }
 
+  /** Associates this course with an instructor. */
   public void setInstructor(Instructor instructor) {
     this.instructor = instructor;
   }
@@ -64,6 +72,11 @@ public class Course {
   @JoinColumn(name = "course_id")
   private List<Review> review;
 
+  /**
+   * Adds a review to this course.
+   *
+   * @param rev the review to add
+   */
   public void addReview(Review rev) {
     if (review == null) {
       review = new ArrayList<>();
@@ -71,10 +84,12 @@ public class Course {
     review.add(rev);
   }
 
+  /** Returns the reviews associated with this course. */
   public List<Review> getReview() {
     return review;
   }
 
+  /** Replaces the reviews associated with this course. */
   public void setReview(List<Review> review) {
     this.review = review;
   }
@@ -88,6 +103,7 @@ public class Course {
       inverseJoinColumns = @JoinColumn(name = "student_id"))
   private List<Student> students;
 
+  /** Adds a student to this course. */
   public void addStudent(Student stud) {
     if (students == null) {
       students = new ArrayList<>();
@@ -95,10 +111,12 @@ public class Course {
     students.add(stud);
   }
 
+  /** Returns the students enrolled in this course. */
   public List<Student> getStudents() {
     return students;
   }
 
+  /** Replaces the students enrolled in this course. */
   public void setStudents(List<Student> students) {
     this.students = students;
   }
